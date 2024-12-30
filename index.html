@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta de Aprendizaje - Máster en Robótica Educativa</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+</head>
+<body> 
+     <div id="particles-js"></div>
+    <header>
+        <h1>Ruta de Aprendizaje</h1><br><br>
+        <h1>Máster en Robótica Educativa</h1>
+        <p>Explora cada nivel y desbloquea nuevas habilidades</p>
+    </header>
+    <main>
+        <div class="game-board">
+            <svg class="road" viewBox="0 0 1300 1300" preserveAspectRatio="xMidYMid meet">
+                <!-- Camino Serpenteante en Zigzag Ocupando toda la Pantalla -->
+                <path d="M50,50 H1200 Q1250,50 1250,100 V200 Q1250,250 1200,250 H50 Q0,250 0,300 V400 Q0,450 50,450 H1200 Q1250,450 1250,500 V600 Q1250,650 1200,650 H50 Q0,650 0,700 V800 Q0,850 50,850 H1200 Q1250,850 1250" fill="none" stroke="#53AC59" stroke-width="8" stroke-dasharray="15,10" />
+                
+                <!-- Nodos (13 Cursos + Meta) -->
+                <circle cx="100" cy="50" r="30" fill="#53AC59" />
+                <circle cx="300" cy="50" r="30" fill="#53AC59" />
+                <circle cx="1000" cy="50" r="30" fill="#53AC59" />
+                <circle cx="550" cy="450" r="30" fill="#53AC59" />
+                <circle cx="1050" cy="250" r="30" fill="#53AC59" />
+                <circle cx="400" cy="250" r="30" fill="#53AC59" />
+                <circle cx="0" cy="360" r="30" fill="#53AC59" />
+                <circle cx="1100" cy="650" r="30" fill="#53AC59" />
+                <circle cx="1000" cy="450" r="30" fill="#53AC59" />
+                <circle cx="630" cy="650" r="30" fill="#53AC59" />
+                <circle cx="200" cy="650" r="30" fill="#53AC59" />
+                <circle cx="300" cy="850" r="30" fill="#53AC59" />
+                <circle cx="950" cy="850" r="35" fill="#53AC59" />
+            </svg>
+            
+            <!-- Etiquetas de los Cursos -->
+            <div class="course" style="left: 70px; top: 60px;" onclick="showDetail('Introducción a la Robótica con Tinkercad')">🏁 1.<br>Introducción a la<br>Robótica con Tinkercad</div>
+            <div class="course" style="left: 430px; top: 70px;" onclick="showDetail('Robótica Educativa Sin Arduino')">🚗 2.<br>Robótica Educativa Sin Arduino</div>
+            <div class="course" style="left: 780px; top: 120px;" onclick="showDetail('Fundamentos de Arduino para Profesores')">🚦 3.<br>Fundamentos de<br>Arduino</div>
+            <div class="course" style="left: 450px; top: 180px;" onclick="showDetail('Robótica para Nivel Primario')">🛤️ 4.<br>Robótica para Nivel Primario</div>
+            <div class="course" style="left: 200px; top: 170px;" onclick="showDetail('Robótica de Competencia')">🏎️ 5.<br>Robótica de<br>Competencia</div>
+            <div class="course" style="left: 250px; top: 280px;" onclick="showDetail('Diseño de Placas Educativas (PCBs)')">🛠️ 6.<br>Diseño de Placas<br>Educativas</div>
+            <div class="course" style="left: 530px; top: 280px;" onclick="showDetail('Diseño 3D Enfocado a la Robótica')">📐 7.<br>Diseño 3D<br>Enfocado</div>
+            <div class="course" style="left: 800px; top: 335px;" onclick="showDetail('Micro:bit para Profesores')">🔌 8.<br>Micro:bit para<br>Profesores</div>
+            <div class="course" style="left: 600px; top: 390px;" onclick="showDetail('Robótica Interactiva')">🎮 9.<br>Robótica<br>Interactiva</div>
+            <div class="course" style="left: 350px; top: 400px;" onclick="showDetail('Domótica')">🏠 10.<br>Domótica</div>
+            <div class="course" style="left: 110px; top: 445px;" onclick="showDetail('Internet de las Cosas (IoT)')">🌐 11.<br>Internet de las<br>Cosas</div>
+            <div class="course" style="left: 440px; top: 505px;" onclick="showDetail('Inteligencia Artificial Aplicada a la Robótica Educativa')">🤖 12.<br>Inteligencia Artificial</div>
+            <div class="course finish" style="left: 800px; top: 500px;" onclick="showDetail('Máster en Robótica Educativa')">🏆 Máster en<br>Robótica Educativa</div>
+        </div>
+
+        <!-- Modal para Detalles de Cursos -->
+<div id="course-detail" class="modal hidden">
+     <div class="modal-content">
+         <span class="close-btn" onclick="closeDetail()">×</span>
+         <h2 id="course-title"></h2>
+         <p id="course-description"></p>
+     </div>
+ </div>
+ 
+
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

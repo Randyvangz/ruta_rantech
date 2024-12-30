@@ -1,0 +1,302 @@
+/* === General Styles === */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0F172A;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* === Header === */
+header {
+    text-align: center;
+    margin: 200px 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #53AC59;
+    text-shadow: 0 0 10px #53AC59;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #A0AEC0;
+}
+
+/* === Game Board === */
+.game-board {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow-y: hidden;
+    background: #1e293b59;
+    border-radius: 30px;
+    padding: 0;
+    box-shadow: 0 0 15px #53AC59;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === Road (SVG Path) === */
+.road {
+    width: 1000px;
+    height: 700px;
+    display: block;
+    margin: 250px 0px 0px 20px;
+}
+
+.road path {
+    stroke-width: 8;
+    stroke: #53AC59;
+    stroke-dasharray: 15, 10;
+    fill: none;
+}
+
+/* === Course Nodes (SVG Circles) === */
+circle {
+    stroke: #0F172A;
+    stroke-width: 2;
+}
+
+/* === Course Labels === */
+.course {
+    position: absolute;
+    background: #1E293B;
+    border: 2px solid #53AC59;
+    border-radius: 50px;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-shadow: 0 0 5px #53AC59;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    color: #FFFFFF;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(83, 172, 89, 0.5);
+}
+
+.course:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #53AC59;
+}
+
+.course.finish {
+    background: #1E293B;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* === Adjust Label Placement (Based on SVG Path) === */
+.course:nth-child(1) { left: 30px; top: 280px; }
+.course:nth-child(2) { left: 180px; top: 180px; }
+.course:nth-child(3) { left: 330px; top: 280px; }
+.course:nth-child(4) { left: 480px; top: 180px; }
+.course:nth-child(5) { left: 630px; top: 280px; }
+.course:nth-child(6) { left: 780px; top: 180px; }
+.course:nth-child(7) { left: 930px; top: 280px; }
+.course:nth-child(8) { left: 1080px; top: 180px; }
+.course:nth-child(9) { left: 1130px; top: 280px; }
+
+/* === Modal === */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #1E293B;
+    border: 2px solid #53AC59;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 15px #53AC59;
+}
+
+.modal-content h2 {
+    color: #53AC59;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: #A0AEC0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #53AC59;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .game-board {
+        height: 400px;
+    }
+
+    .road {
+        width: 1000px;
+    }
+
+    .course {
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    header p {
+        font-size: 0.9em;
+    }
+
+    .game-board {
+        height: 300px;
+    }
+
+    .road {
+        width: 800px;
+    }
+
+    .course {
+        font-size: 0.7em;
+        padding: 5px 8px;
+    }
+}
+
+/* === Modal Mejorado === */
+.modal {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    pointer-events: none; /* Evita interacción cuando está oculto */
+}
+
+.modal.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all; /* Habilita interacción cuando está visible */
+}
+
+/* === Contenido del Modal === */
+.modal-content {
+    background: #1E293B;
+    border: 2px solid #53AC59;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 15px #53AC59;
+}
+
+/* === Botón de Cierre === */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+    color: #53AC59;
+}
+
+/* === Fondo de Partículas === */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Asegura que esté detrás de todo el contenido */
+    background: #0F172A; /* Color de fondo base */
+    overflow: hidden;
+}
+
+/* === Camino Animado con Flujo de Luz === */
+.road path {
+    stroke-width: 8;
+    stroke: #53AC59; /* Color del camino */
+    stroke-dasharray: 20; /* Longitud de la línea */
+    stroke-dashoffset: 1000; /* Punto de inicio de la animación */
+    animation: flowLight 20s linear infinite;
+    fill: none;
+}
+
+/* === Animación del Flujo de Luz === */
+@keyframes flowLight {
+    0% {
+        stroke-dashoffset: 1000;
+        stroke: #53AC59;
+    }
+    50% {
+        stroke: #A0FF8F; /* Color más brillante al centro */
+    }
+    100% {
+        stroke-dashoffset: 0;
+        stroke: #53AC59;
+    }
+}
+
+/* === Tarjetas con Efecto 3D === */
+.course {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+    perspective: 1000px;
+}
+
+/* Efecto Hover General */
+.course:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto de Movimiento con el Cursor */
+.course.active {
+    transition: none;
+}
